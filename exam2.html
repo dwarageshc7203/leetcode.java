@@ -1,0 +1,78 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <p id="textBox"></p>
+        <p id="timer"></p>
+        <h3>1) What is the color of apple?</h3>
+        <input type="checkbox" name="a1" value="1">a) Red
+        <input type="checkbox" name="a1" value="2">b) Grey
+        <input type="checkbox" name="a1" value="3">c) Pink
+        <input type="checkbox" name="a1" value="4">d) Black
+
+        <h3>1) What is the color of apple?</h3>
+        <input type="checkbox" name="a2" value="1">a) Red
+        <input type="checkbox" name="a2" value="2">b) Grey
+        <input type="checkbox" name="a2" value="3">c) Pink
+        <input type="checkbox" name="a2" value="4">d) Black
+
+        <button id="submit" type="submit"> SUBMIT</button>
+        <p id="result"></p>
+        <script>
+            var time=60;
+            const timer=document.getElementById("timer");
+            const submit=document.getElementById("submit");
+            const result=document.getElementById("result");
+            function ctimer(){
+                if(time>0){
+                    time--;
+                    timer.innerHTML=time;
+                }
+            }
+            ctimer();
+            setInterval(ctimer, 1000);
+
+            const correctAns={a1: '1', a2: '1'};
+            function finish(){
+                let a1=document.querySelector("input[name='a1']:checked");
+                let a2=document.querySelector("input[name='a2']:checked");
+
+                if (a1.value == correctAns.a1){
+                    result.innerHTML="Correct";
+                }
+                else{
+                    result.innerHTML="Wrong, correct is Red";
+                }
+
+                if (a2.value == correctAns.a2){
+                    result.innerHTML="Correct";
+                }
+                else{
+                    result.innerHTML="Wrong, correct is Red";
+                }
+                
+            }
+            submit.onclick=finish;
+            
+
+
+
+
+
+            const text=document.getElementById("textBox");
+            function showTime(){
+                const now= new Date();
+                text.innerHTML= now.toLocaleTimeString();
+            }
+            showTime();
+            setInterval(showTime, 1000);
+            submit.addEventListener("click", function(){ 
+                /*result.innerHTML="Success";*/
+                alert("Form Submitted Successfully");
+            })
+
+
+        </script>
+    </body>
+</html>
