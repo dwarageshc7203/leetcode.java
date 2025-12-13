@@ -1,29 +1,42 @@
-import java.util.HashSet;
 class Solution {
-    public int lengthOfLongestSubstring(String s) {
-        HashSet<Character> hash= new HashSet();
-        int left=0;
-        int right=0;
-        int max=0;
-
-        while( right < s.length()){
-            if( !hash.contains(s.charAt(right))){
-                hash.add(s.charAt(right));
-                right++;
-                max=Math.max(max, hash.size());
+    public  int value(char a) {
+        if (a == 'I') {
+            return 1;
+        } else if (a == 'V') {
+            return 5;
+        } else if (a == 'X') {
+            return 10;
+        } else if (a == 'L') {
+            return 50;
+        } else if (a == 'C') {
+            return 100;
+        } else if (a == 'D') {
+            return 500;
+        } else if (a == 'M') {
+            return 1000;
+        } else {
+            return 0;
+        }
+        }
+    public int romanToInt(String s) {
+        int answer = 0;
+        for ( int i = 0; i < s.length(); i++){
+            char a = s.charAt(i);
+            if( i < s.length() - 1 && value(a) < value(s.charAt( i +1))) {
+                answer += value(s.charAt( i +1)) - value (a);
+                i++;
             }
             else{
-                hash.remove(s.charAt(left));
-                left++;    
-                max=Math.max(max, hash.size());            
+                answer += value( a );
             }
         }
-        return max;
+        return answer;
     }
-    public static void main(String [] args){
-        Solution obj= new Solution();
-        String s="aabcabcdef";
-        int result=obj.lengthOfLongestSubstring(s);
-        System.out.println(result);
-}
+
+    public static void main( String [] args){
+        Solution obj = new Solution();
+        String s = "MCMXCIV";
+        System.out.println(obj.romanToInt(s));
+
+    }
 }
