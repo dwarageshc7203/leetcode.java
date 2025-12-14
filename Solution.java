@@ -1,5 +1,5 @@
 class Solution {
-    public  int value(char a) {
+/*     public  int value(char a) {
         if (a == 'I') {
             return 1;
         } else if (a == 'V') {
@@ -38,5 +38,28 @@ class Solution {
         String s = "MCMXCIV";
         System.out.println(obj.romanToInt(s));
 
+    } */
+    public String intToRoman(int num) {
+        int[] value = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        String[] letter = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
+
+        int length = String.valueOf((num)).length();
+        StringBuilder roman = new StringBuilder();
+        for ( int i = 0; i< value.length; i++){
+            while( num >= value[i]){
+                roman.append(letter[i]);
+                num = num - value[i];
+            }
+        }
+        String ans = String.valueOf(roman);
+
+        return ans;
     }
+
+    public static void main(String [] args){
+        Solution obj = new Solution();
+        int num= 3749;
+        System.out.println(obj.intToRoman(num));
+    }
+    
 }
