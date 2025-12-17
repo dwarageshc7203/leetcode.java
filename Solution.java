@@ -3,7 +3,10 @@ class Solution {
         int min=Integer.MAX_VALUE;
         int minPtr= 0;
         int max=0;
-        for( int i = 0; i< prices.length - 1; i++){
+        int start = 0;
+        int profit = 0;
+        while(start < prices.length){
+        for( int i = start; i< prices.length - 1; i++){
             if(prices[i] < min && prices[i+1] > prices[i]){
                 min = prices[i];
                 minPtr = i;
@@ -14,9 +17,13 @@ class Solution {
                 max = prices[i];
             }
         }
+        profit = profit + (max - min);
+        start = minPtr +1;
         System.out.println(min);
         System.out.println(max);
-        int profit = max - min;
+        System.out.println(profit);
+        System.out.println(start);
+    }
         return profit;
     }
     public static void main(String[] args){

@@ -1,9 +1,17 @@
-class LeetCode{//This is the class
+class LeetCode{
+    public int maxProfit(int[] prices) {
+        int profit = 0;
 
-    int coffee = 10;
-    int tea= 10;
-    public static void main( String [] args){
-        LeetCode obj = new LeetCode(); //This is the object
-        System.out.println(obj.coffee+obj.tea);
+        for( int i = 1; i< prices.length  ; i++){
+            if( prices[i - 1] < prices[i]){
+                profit += prices[i] - prices[i-1];
+            }
+        }
+        return profit;
+    }
+    public static void main(String[] args){
+        LeetCode obj= new LeetCode();
+        int[] prices = {1,2,3,4,5};
+        System.out.println(obj.maxProfit(prices));
     }
 }
