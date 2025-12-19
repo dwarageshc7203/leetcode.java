@@ -4,6 +4,7 @@ public class jFullStack {
             System.out.println("Day "+i);
             for ( int j= 9; j<= 20; j++){
                 System.out.println(String.format("Time: %d hours", j)   );
+                System.out.println("Hi " +j+1);
             }
         }
     }
