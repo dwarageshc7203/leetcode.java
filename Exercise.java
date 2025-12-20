@@ -1,23 +1,43 @@
 public class Exercise {
     public static void main(String[] args) {
-        System.out.println("For Loop:");
-        for(int i = 1; i<= 5; i++){
-            System.out.print(" "+i);
+        
+        double num1 = 7;
+        double num2 = 3;
+        char operator = '+';
+        String again = "y"; 
+        double result = 0;
+        
+        while( again == "y"){
+        
+        if( operator == '+'){
+            result = num1 + num2;
+            again = "n";
         }
-        int j = 1;
-        System.out.println("");
-        System.out.print("While Loop:");
-        while(j<= 5){
-            System.out.print(" "+j);
-            j++;
+        else if( operator == '-'){
+            result = num1 - num2;
+            again = "n";
         }
-        int k = 1;
-         System.out.println("");
-        System.out.print("Do-While Loop:");
-        do{
-            System.out.print(" "+k);
-            k++;
+        
+        else if( operator == '*'){
+            result = num1 * num2;
+            again = "n";
         }
-        while(k <= 5);
+        
+        else if( operator == '/'){
+            if( num2 > 0){            }
+            result = num1 / num2;
+            again = "n";
+        }
+        
+        
+        else{
+            System.out.println("Wrong operator");
+        }
+        
+        System.out.println("Result: " +result);
+        System.out.println("Thank you for using the calculator.");
+    }
+
+        
     }
 }
