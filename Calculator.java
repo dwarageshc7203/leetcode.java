@@ -6,6 +6,8 @@ public class Calculator {
 
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println(obj.pen(5));
+
         System.out.println("Enter first number: ");
         int number1 = scanner.nextInt();
 
@@ -14,6 +16,8 @@ public class Calculator {
 
         System.out.println("Enter the operator symbol(+ , -, *, %): ");
         char operator = scanner.next().charAt(0);
+
+
 
         //operations
 
@@ -89,5 +93,13 @@ class operations{
                 System.out.println("Enter the correct symbol: ");
                 break;                
         }
+    }
+
+    public String pen(int cost){
+        if( cost >= 10)
+            return "Pen";
+        System.out.println("Is it printing this one?");
+        return "Nothing";
+
     }
 }
