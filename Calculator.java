@@ -100,6 +100,17 @@ class operations{
             return "Pen";
         System.out.println("Is it printing this one?");
         return "Nothing";
-
     }
+    
+    //checking for method overloading
+
+    public int addTest(int a, int b){
+            return 10;
+        }
+
+    public int addTest(int a, int b, int c){   //perfectly valid
+        return 20;
+    } 
+
+    
 }
