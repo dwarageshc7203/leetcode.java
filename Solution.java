@@ -1,34 +1,60 @@
+//Given an m x n grid of characters board and a string word, return true if word exists in the grid.
+
 class Solution {
-    public int maxProfit(int[] prices) {
-        int min=Integer.MAX_VALUE;
-        int minPtr= 0;
-        int max=0;
-        int start = 0;
-        int profit = 0;
-        while(start < prices.length){
-        for( int i = start; i< prices.length - 1; i++){
-            if(prices[i] < min && prices[i+1] > prices[i]){
-                min = prices[i];
-                minPtr = i;
+    public boolean exist(char[][] board, String word) {
+
+        int row = board.length;
+        int column = board[0].length;
+
+        for( int i = 0; i < row; i++){
+            for( int j = 0; j < column; j++){
+                if(movement(board, i, j, 0, word))
+                    return true;
             }
         }
-        for( int i = minPtr; i< prices.length; i++){
-            if(prices[i] > min && prices[i] > max){
-                max = prices[i];
-            }
+
+        return false;
+    }
+
+    public boolean movement(char[][] board, int row, int column, int index, String word){
+
+        if(index == word.length()){
+            return true;
         }
-        profit = profit + (max - min);
-        start = minPtr +1;
-        System.out.println(min);
-        System.out.println(max);
-        System.out.println(profit);
-        System.out.println(start);
+
+        if( row < 0 ||
+            column < 0 ||
+            row >= board.length ||
+            column >= board[0].length ||
+            board[row][column] != word.charAt(index)
+        ){
+            return false;
+        }
+
+        char temp = board[row][column];
+        board[row][column] = '$';
+
+        //I implemented backtracking here hehe
+
+        boolean result = (
+            movement(board, row + 1, column, index+1, word) ||
+            movement(board, row, column + 1, index+1, word) ||
+            movement(board, row - 1, column, index+1, word) ||
+            movement(board, row, column - 1, index+1, word)
+        );
+
+        board[row][column] = temp;
+
+        return result;
+
     }
-        return profit;
-    }
-    public static void main(String[] args){
-        Solution obj= new Solution();
-        int[] prices = {7,1,5,3,6,4};
-        System.out.println(obj.maxProfit(prices));
+
+    //main method
+    public static void main( String[] args){
+        char[][] board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'} }; //[["A","B","C","E"],["S","F","C","S"]
+        String word = "ABCCED";
+        Solution obj = new Solution();
+        System.out.println(obj.exist(board, word));
     }
 }
+

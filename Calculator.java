@@ -109,6 +109,8 @@ class operations{
         }
 
     public int addTest(int a, int b, int c){   //perfectly valid
+        int num1[] = new int[5];
+        int[] num2 = new int[5000];
         return 20;
     } 
 
