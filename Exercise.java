@@ -1,43 +1,19 @@
 public class Exercise {
     public static void main(String[] args) {
-        
-        double num1 = 7;
-        double num2 = 3;
-        char operator = '+';
-        String again = "y"; 
-        double result = 0;
-        
-        while( again == "y"){
-        
-        if( operator == '+'){
-            result = num1 + num2;
-            again = "n";
-        }
-        else if( operator == '-'){
-            result = num1 - num2;
-            again = "n";
-        }
-        
-        else if( operator == '*'){
-            result = num1 * num2;
-            again = "n";
-        }
-        
-        else if( operator == '/'){
-            if( num2 > 0){            }
-            result = num1 / num2;
-            again = "n";
-        }
-        
-        
-        else{
-            System.out.println("Wrong operator");
-        }
-        
-        System.out.println("Result: " +result);
-        System.out.println("Thank you for using the calculator.");
-    }
 
-        
+        StringBuffer sb = new StringBuffer("Hey");
+        System.out.println(sb.capacity());
+
+        sb.append(" hi");
+        System.out.println(sb);
+
+        String str = sb.toString();
+        System.out.println(str);
+
+        sb.deleteCharAt(0);
+        System.out.println(sb);
+
+        sb.insert(0, "H");
+        System.out.println(sb);
     }
 }
