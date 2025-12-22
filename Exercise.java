@@ -1,19 +1,27 @@
 public class Exercise {
     public static void main(String[] args) {
+        Mobile m1 = new Mobile();
+        Mobile m2 = new Mobile();
 
-        StringBuffer sb = new StringBuffer("Hey");
-        System.out.println(sb.capacity());
+        m1.brand = "IPhone";
+        m2.brand = "Moto";
 
-        sb.append(" hi");
-        System.out.println(sb);
+        Mobile.name = "SmartPhone";
+        m1.show();
+        m2.show();
 
-        String str = sb.toString();
-        System.out.println(str);
+        Mobile.name = "Phone";
+        m1.show();
+        m2.show();
+        
+    }
+}
 
-        sb.deleteCharAt(0);
-        System.out.println(sb);
+class Mobile{
+    String brand;
+    static String name;
 
-        sb.insert(0, "H");
-        System.out.println(sb);
+    public void show(){
+        System.out.println(brand + " ; " + name);
     }
 }
