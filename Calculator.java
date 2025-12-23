@@ -1,23 +1,24 @@
 public class Calculator{
-    Operation obj = new Operation();
-    obj.show();
-    
-    
+    public static void main(String[] args){
+
+    Human obj = new Human();
+
+    /* System.out.println(obj.name); */
+
+    obj.setName("CNL");
+    obj.getName();
+    }
 }
 
-class Operation{
-    
-    static int num;
-     static String name = "Casio";
-    static{
-        num = 10;
-        name = "Mechanical Calc";
-        System.out.println("Static is implemented");
+class Human{
+    private String name;
+
+    public String getName(){
+        System.out.println(name);
+        return name;
     }
 
-    static void show(){
-        System.out.println("Show method");
-        System.out.println(num);
-        System.out.println(name);
+    public void setName(String a){
+        name = a;
     }
 }
