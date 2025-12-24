@@ -1,11 +1,16 @@
 public class jFullStack {
     public static void main(String[] args) {
-        for( int i = 1; i<= 5; i++){
-            System.out.println("Day "+i);
-            for ( int j= 9; j<= 20; j++){
-                System.out.println(String.format("Time: %d hours", j)   );
-                System.out.println("Hi " +j+1);
-            }
-        }
+
+        Human obj = new Human("CNL");
+        System.out.println(obj.name);
+
+}
+}
+
+class Human{
+    String name;
+    public Human(String n){
+        name = n;
     }
+
 }
