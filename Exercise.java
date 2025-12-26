@@ -1,34 +1,53 @@
-public class Exercise{
-    public static void main(String[] args){
+public class Exercise {
+    public static void main(String[] args) {
+        Employee emp = new Employee();
+        Manager man = new Manager();
 
-        //final keyword used now;
+          /* Name:  Alice,  Salary:  50000.0
 
-        //upcasting
+  Name:  Bob,  Salary:  80000.0,  Department:  IT */
+         String name1 = "Alice";
+        double salary1 = 50000.0;
 
-        A obj = new B();
-        obj.showA(); //only allows showA() since it's of type A
+        String name2 = "Bob";
+        double salary2 = 80000.0;
+        String dept2 = "IT";
 
-        /* 
-        B obj = new A(); //doesn't work because A has no idea about B
-         */
+        emp.getDetails(name1, salary1);
+        man.getDetails(name2, salary2, dept2);
 
-        //downcasting
 
-        B obj1 = (B) obj;
-        obj1.showB();
     }
 }
 
-class A
+class Employee
+//Employee class
 {
-    public void showA(){
-        System.out.println("In A");
+    private String name;
+    private double salary;
+
+    public Employee(){ // constructor
+    }
+
+    public void getDetails(String name, double salary){//getter        
+        System.out.println("Name: " + name + ", " + "Salary: " + salary);
     }
 }
 
-class B extends A
+class Manager extends Employee
+//Manager class
 {
-    public void showB(){
-        System.out.println("In B");
+
+    private String department;
+
+    public Manager(){ // constructor
+        String name;
+        double salary;
+        String department;
     }
+
+    public void getDetails(String name, double salary, String department){ // getter        
+        System.out.println("Name: " + name + ", " + "Salary: " + salary + ", " + "Department: " + department);
+    }
+
 }
