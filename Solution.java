@@ -24,7 +24,7 @@ class Solution {
     }
 
     //movement
-    public boolean movement(char[][] board, String[] words, int row, int column, int k, int index){
+    final public boolean movement(char[][] board, String[] words, int row, int column, int k, int index){
         
         if(index == words[k].length()){
             return true;

@@ -1,27 +1,34 @@
-public class Exercise {
-    public static void main(String[] args) {
-        Mobile m1 = new Mobile();
-        Mobile m2 = new Mobile();
+public class Exercise{
+    public static void main(String[] args){
 
-        m1.brand = "IPhone";
-        m2.brand = "Moto";
+        //final keyword used now;
 
-        Mobile.name = "SmartPhone";
-        m1.show();
-        m2.show();
+        //upcasting
 
-        Mobile.name = "Phone";
-        m1.show();
-        m2.show();
-        
+        A obj = new B();
+        obj.showA(); //only allows showA() since it's of type A
+
+        /* 
+        B obj = new A(); //doesn't work because A has no idea about B
+         */
+
+        //downcasting
+
+        B obj1 = (B) obj;
+        obj1.showB();
     }
 }
 
-class Mobile{
-    String brand;
-    static String name;
+class A
+{
+    public void showA(){
+        System.out.println("In A");
+    }
+}
 
-    public void show(){
-        System.out.println(brand + " ; " + name);
+class B extends A
+{
+    public void showB(){
+        System.out.println("In B");
     }
 }
