@@ -1,71 +1,91 @@
-import java.util.ArrayList;
-import java.util.List;
+/* class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> answer= new ArrayList<>();
 
-class Solution {
-    public List<String> findWords(char[][] board, String[] words) {
-        //init the row and column
-        int row = board.length;
-        int column = board[0].length;
-        int len = words.length;
-        List<String> output = new ArrayList<>();
+        for(int i=0; i< nums.length-2; i++){
+            int right=nums.length-1;
+            int left= i+1;
 
-        for (int k = 0; k < len; k++) {
-            boolean found = false;
-            for (int i = 0; i < row && !found; i++) {
-                for (int j = 0; j < column && !found; j++) {
-                    if(movement(board, words, i , j, k , 0)){
-                        output.add(words[k]);
-                        found = true;
+            if (i>0 && nums[i]==nums[i-1]){
+                continue;
+            }
+
+            while(left< right){
+                if( nums[left]+ nums[i]+ nums[right]==0){
+                    answer.add(Arrays.asList(nums[left], nums[i], nums[right]));
+
+                    while( left< right && nums[left]==nums[left+1]){
+                        left++;
                     }
+
+                    while( left< right && nums[right]==nums[right-1]){
+                        right--;
+                    }
+                    left++;
+                    right--;
+                }
+
+                else if(nums[left]+ nums[i]+ nums[right]<0){
+                    left++;
+                }
+
+                else{
+                    right--;
+                }  
+        }
+        }
+        return answer;
+    }
+} */
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> output = new ArrayList<>();
+
+        for(int i = 0; i< nums.length; i++){
+            int right = nums.length - 1;
+            int left = i;
+
+            if( i > 0 && nums[i] == nums[i-1]){
+                continue;
+            }
+
+            while ( left < right){
+                if(nums[left] + nums[left+1] + nums[right] == 0 ){
+                    output.add(Arrays.asList(nums[left] , nums[left+1] , nums[right]) );
+                    
+                    while(left < right && nums[left] == nums[left + 1]){
+                        left++;
+                    }
+                    
+                    while(left < right && nums[right] == nums[right - 1]){
+                        right--;
+                    }
+                    left++;
+                    right--;
+                }
+                
+                else if(nums[left] + nums[left + 1] + nums[right] > 0){
+                    right--;
+                }                
+                
+                else{
+                    left++;
                 }
             }
         }
         return output;
     }
 
-    //movement
-    final public boolean movement(char[][] board, String[] words, int row, int column, int k, int index){
-        
-        if(index == words[k].length()){
-            return true;
-        }
-
-        if( 
-            row < 0 ||
-            column < 0 ||
-            row >= board.length ||
-            column >= board[0].length ||
-            board[row][column] != words[k].charAt(index)
-            ){
-            return false;
-        }
-
-        char temp = board[row][column];
-        board[row][column] = '$';
-
-        boolean result =(
-             movement( board, words, row + 1, column, k, index + 1) || 
-             movement( board, words, row - 1, column, k, index + 1) ||
-             movement( board, words, row, column + 1, k, index + 1) ||
-             movement( board, words, row, column - 1, k, index + 1)
-        );
-        board[row][column] = temp;
-
-        return result;
-    }
-
     public static void main(String[] args){
-        char[][] board = {
-    {'o','a','a','n'},
-    {'e','t','a','e'},
-    {'i','h','k','r'},
-    {'i','f','l','v'}
-};
+        Solution obj = new Solution();
 
-String[] words = {"oath", "pea", "eat", "rain"};
+        int[] nums = {-1,0,1,2,-1,-4};
 
-Solution obj = new Solution();
-
-System.out.println(obj.findWords(board, words));
+        obj.threeSum(nums);
     }
 }
