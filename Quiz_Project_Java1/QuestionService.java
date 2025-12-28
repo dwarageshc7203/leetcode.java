@@ -1,6 +1,10 @@
 package Quiz_Project_Java1;
 
+import java.util.Scanner;
+
 public class QuestionService {
+
+    Scanner scanner = new Scanner(System.in);
 
     Questions[] questions = new Questions[5];
 
@@ -15,7 +19,7 @@ public class QuestionService {
 
     public boolean checkAnswer(int qNo, String ans){
 
-        if(questions[qNo].getAns() == ans){
+        if(questions[qNo].getAns().equals(ans)){
             return true;
         }
         return false;
@@ -23,14 +27,30 @@ public class QuestionService {
 
     public void displayQuestions(){
 
-        System.out.println(questions[0]);
-        for( Questions q : questions){
-            System.out.println(q.toString());
+        int score = 0;
+        int num = 0;
+
+        while(num < 5){
+            System.out.println("Question:");
+            System.out.println(questions[num].getQuestion());
+            System.out.println(questions[num].getO1());
+            System.out.println(questions[num].getO2());
+            System.out.println(questions[num].getO3());
+            System.out.println(questions[num].getO4());
+            System.out.println("Enter the right answer: ");
+            String qAnswer = scanner.nextLine();
+            
+            if(checkAnswer(num, qAnswer)){
+                score += 1;
+            }
+            num += 1;
+
+            System.out.println("Your current score is " + score + "/5");
         }
     }    
 
     public void startQuiz(){
-        
+
     }
 
 }
