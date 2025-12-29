@@ -46,6 +46,9 @@ public class QuestionService {
             num += 1;
 
             System.out.println("Your current score is " + score + "/5");
+
+            System.out.println("What is the full use of documenting all these?");
+            System.out.println("Am really trying my best to motivate myself into thinking that I would be of very great help to whatever I collaborate with");
         }
     }    
 
