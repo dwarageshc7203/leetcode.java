@@ -1,12 +1,17 @@
 
 @FunctionalInterface
 interface A{
-    public void show(String name);
+    public String name(String name);
 }
 
 public class Exercise{
     public static void main(String[] args){
-        A obj = (String name) -> System.out.println("In show" + " " + name);
-        obj. show("CNL");
+        A obj = (name) -> {
+            return ("Your name is " + name);
+        };
+        String answer = obj.name("CNL");
+
+        System.out.println(answer);
+        System.out.println(obj.name("CNL"));
     }
-}
+} 
