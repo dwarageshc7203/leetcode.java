@@ -1,20 +1,46 @@
-public class Exercise{
-    public static void main(String[] args){
-        int i = 0;
-        int j = 0;
-        System.out.println("Initial i: " + i);
-        System.out.println("Initial j: " + j);
+// TODO: Define custom exception InvalidAgeException extending Exception
+
+public class Exercise {
+    
+    public static void checkAge(int age) throws InvalidAgeException {
+        // TODO: Throw custom exception if age < 18, else print "Access granted"
+        if(age < 18){
+            throw new InvalidAgeException("Exception caught:  Age must be 18 or older");
+        }
+        else{
+            System.out.println("Access granted");
+        }
+        
+    }
+    
+    public static void main(String[] args) {
+        // TODO: Call checkAge(16) and checkAge(21) inside separate try-catch blocks
 
         try
         {
-            j = 18 / i;
+            checkAge(16);
         }
-        catch(Exception e)
-        {
-            System.out.println("Problem with the value of i ( " + i + " )");
+        catch( InvalidAgeException e){
+            System.out.println(e.getMessage());
         }
 
-        System.out.println("Final value of i: " + i);
-        System.out.println("Final value of j: " + j);
+        try
+        {
+            checkAge(21);
+        }
+        catch( InvalidAgeException e){
+            System.out.println(e.getMessage());
+        }
+        
     }
-} 
+
+}
+
+class InvalidAgeException extends Exception
+{
+    public InvalidAgeException(String message)
+    {
+        super(message);
+    }
+}
+
