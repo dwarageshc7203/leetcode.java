@@ -1,46 +1,33 @@
-// TODO: Define custom exception InvalidAgeException extending Exception
-
 public class Exercise {
-    
-    public static void checkAge(int age) throws InvalidAgeException {
-        // TODO: Throw custom exception if age < 18, else print "Access granted"
-        if(age < 18){
-            throw new InvalidAgeException("Exception caught:  Age must be 18 or older");
-        }
-        else{
-            System.out.println("Access granted");
-        }
-        
-    }
-    
     public static void main(String[] args) {
-        // TODO: Call checkAge(16) and checkAge(21) inside separate try-catch blocks
 
-        try
-        {
-            checkAge(16);
-        }
-        catch( InvalidAgeException e){
-            System.out.println(e.getMessage());
-        }
+        Runnable obj1 = new A();
+        Runnable obj2 = new B();
 
-        try
-        {
-            checkAge(21);
-        }
-        catch( InvalidAgeException e){
-            System.out.println(e.getMessage());
-        }
+        Thread t1 = new Thread(obj1);
+        Thread t2 = new Thread(obj2);
+
+        t1.start();
+        t2.start();
         
     }
 
 }
 
-class InvalidAgeException extends Exception
-{
-    public InvalidAgeException(String message)
-    {
-        super(message);
+class A implements Runnable{
+    public void run(){
+        for(int i = 0; i< 11; i++)
+            System.out.println("Hey");
+        try{Thread.sleep(1000);}
+        catch(InterruptedException e){System.out.println(e);}
     }
 }
 
+class B implements Runnable{
+    public void run(){
+        for(int i = 0; i< 11; i++)
+            System.out.println("Hi");
+        try{Thread.sleep(1000);}
+        catch(InterruptedException e){System.out.println(e);}
+    }
+}
