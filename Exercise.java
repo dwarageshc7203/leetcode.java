@@ -1,33 +1,40 @@
+// TODO: Define PrinterTask class that implements Runnable
+class PrinterTask implements Runnable{
+    public void run(){
+        for ( int i = 1; i <= 5; i++){
+            System.out.println(Thread.currentThread().getName() + ": Running task " + i);
+        }
+    }
+}
 public class Exercise {
     public static void main(String[] args) {
+        // TODO: Create a single PrinterTask object
+        PrinterTask task = new PrinterTask();
 
-        Runnable obj1 = new A();
-        Runnable obj2 = new B();
+        Thread t1 = new Thread(task, "Worker-1");
+        Thread t2 = new Thread(task, "Worker-2");
 
-        Thread t1 = new Thread(obj1);
-        Thread t2 = new Thread(obj2);
 
+        // TODO: Create two threads using the same task
+        // Name them "Worker-1" and "Worker-2"
+        
         t1.start();
         t2.start();
-        
-    }
 
-}
+        // TODO: Start both threads
 
-class A implements Runnable{
-    public void run(){
-        for(int i = 0; i< 11; i++)
-            System.out.println("Hey");
-        try{Thread.sleep(1000);}
-        catch(InterruptedException e){System.out.println(e);}
-    }
-}
-
-class B implements Runnable{
-    public void run(){
-        for(int i = 0; i< 11; i++)
-            System.out.println("Hi");
-        try{Thread.sleep(1000);}
-        catch(InterruptedException e){System.out.println(e);}
+        // TODO: Use join() to wait for both threads to finish
+        try {
+			t1.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        try {
+			t2.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }
