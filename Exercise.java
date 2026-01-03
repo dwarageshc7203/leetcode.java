@@ -1,29 +1,22 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-public class Exercise{
+public class Exercise {
+    
     public static void main(String[] args){
-        Set<Integer> nums = new HashSet<Integer>();
-        nums.add(111);
-        nums.add(2222);
-        nums.add(333);
-        System.out.println(nums);
+        
+        List<String> names = Arrays.asList("Alice", "Bob", "Alice", "David", "Bob");
+        
+        // TODO: Print the original list
 
-        Iterator<Integer> val = nums.iterator();
-        Map<String, Integer> students = new HashMap<>();
-        students.put("CNL", 100);
-        students.put("CNL", 99);
-        students.put("CNL", 100);
-        students.put("BNL", 99);
-        students.put("ANL", 99);
-        System.out.println(students);
-        System.out.println(students.keySet());
-        System.out.println(students.values());
+        System.out.println("Original List: " + names);
+        
+        Set<String> renames = new LinkedHashSet<String>(names);
 
-}
+        // TODO: Convert the list to a LinkedHashSet to remove duplicates while preserving order
+
+        // TODO: Print the set of unique names
+        System.out.println("Unique Names:  " + renames);
+        
+    }
+
 }
