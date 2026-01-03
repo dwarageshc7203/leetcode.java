@@ -1,44 +1,22 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.stream.*;
 
-class Student{
-    int age;
-    String name;
-
-    //constructor
-    public Student(int age, String name) {
-        this.age = age;
-        this.name = name;
-    }
-
-    //toString
-    @Override
-    public String toString() {
-        return "Student [age=" + age + ", name=" + name + "]";
-    }
-}
-
-public class Exercise{
+public class Exercise {
     public static void main(String[] args) {
-        List <Student> nums = new ArrayList<>();
-        
-        nums.add(new Student(19, "CNL"));
-        nums.add(new Student(20, "BNL"));
-        nums.add(new Student(18, "DNL"));
+       
+        List<String> products = Arrays.asList("Laptop", "Pen", "Notebook", "Headphones", "Smartphone");
 
-        Comparator<Student> com = new Comparator<Student>() {
-            public int compare(Student i, Student j){
-                if(i.age > j.age){
-                return 1;
-                }
-                else{
-                    return -1;
-                }
-            }
-        };
-        Collections.sort(nums, com);
-        System.out.println(nums);
+        // TODO: Print the original list
+        System.out.println("Original List: " + products);
+        
+        // TODO: Filter names longer than 5 characters, convert to uppercase, sort, and collect into a list
+        List<String> filtered = products.stream()
+                                .filter(n -> n.length() > 5)
+                                .map(n -> n.toUpperCase())
+                                .sorted()
+                                .collect(Collectors.toList());
+
+        // TODO: Print the filtered list
+        System.out.println("Filtered List: " + filtered);
     }
 }

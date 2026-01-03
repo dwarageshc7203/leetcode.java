@@ -1,23 +1,50 @@
-import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 
-public class Solution {
-    public static int repeatedNTimes(int[] nums) {
-        HashMap<Integer, Integer> map = new HashMap<>();
-        int rn = 0;
-        for(int i = 0; i < nums.length; i++){
-            if(map.containsKey(nums[i])){
-                rn = nums[i];
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+
+        int leftR = 0;
+        int leftC = 0;
+        int rightR = matrix.length - 1;
+        int rightC = matrix[0].length - 1;
+
+        List<Integer> answer = new ArrayList<>();
+
+        while( leftR <= rightR && leftC <= rightC)
+        {
+            //top side
+            for(int i = leftC; i <= rightC; i++){
+                answer.add(matrix[leftR][i]);
             }
-            else{
-                map.put(nums[i], 1 );
+            leftR++;
+
+            //right side
+            for( int i = leftR; i <= rightR; i++){
+                answer.add(matrix[i][rightC]);
             }
+            rightC--;
+
+
+            //bottom side
+            if( leftR <= rightR)
+            {
+                for(int i = rightC; i >= leftC; i--){
+                    answer.add(matrix[rightR][i]);
+                }
+            }
+            rightR--;
+
+            //left side
+            if(leftC <= rightC)
+            {
+                for(int i = rightR; i >= leftR; i--){
+                    answer.add(matrix[i][leftC]);
+                }
+            }
+            leftC++;
         }
-        return rn;
-    }
 
-    public static void main(String[] args){
-        int[] nums = {1,2,3,3};
-        int result = repeatedNTimes(nums);
-        System.out.println(result);
+        return answer;
     }
 }
