@@ -1,132 +1,23 @@
-/* import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
-class Solution{
-    public static void main(String[] args){
-
-    }
-}
-
-class Main{
-    List<String> result = new ArrayList();
-    TrieNode root;
-    Trie trie = new Trie();
-    public List<String> findWords(char[][] board, String[] words) {
-
-        //creating the tree of words
-        for( String s : words){
-            trie.insert(s);
-            root = trie.root;
-        }
-
-        for( int i = 0; i < board.length; i++){
-            for( int j = 0; j< board[0].length; j++){
-                root.search(board, i, j, root, result);
-            }
-        }
-        return result;
-    }
-}
-
-class Trie{
-    //constructor
-    public Trie(){
-        Trie root = new Trie();
-    }
-}
-
-class TrieNode{
-    //instance variables
-    TrieNode[] children;
-    String word;
-
-    public void insert(String word){
-        TrieNode current = new TrieNode();
-
-        for( char c : word.toCharArray())
-        {
-            if( current.children[ c - 'a'] == null)
-                current.children[ c - 'a'] = new TrieNode();
-            current = current.children[ c - 'a'];
-        }
-    }
-    
-    public void search(char[][] board, int i, int j, TrieNode node, List<String> result){
-
-        char temp = board[i][j];
-
-        if(
-            board[i][j] == '$' ||
-            node.children == null
-        ){
-            return;
-        }
-
-        node = node.children[ board[i][j] - 'a'];
-
-        if(node.word != null){
-            result.add(node.word);
-            node.word = null;
-        }
-
-        board[i][j] = '$';
-
-        if(i > board.length - 1){
-            search( board, i - 1, j, node, result);
-        }
-
-        if( j > board[0].length - 1){
-            search( board, i, j - 1, node, result);
-        }
-
-        if( i < 0){
-            search( board, i + 1, j, node, result);
-        }
-
-        if( j < 0){
-            search( board, i, j + 1, node, result);
-        }
-
-        board[i][j] = temp;
-    }
-} */
-
- class Solution {
-    public int search(int[] nums, int target) {
-
-        int left = 0;
-        int right = nums.length -1;
-        int index = -1;
-
-        while(left <= right)
-        {
-            int mid = left + (right - left) / 2;
-
-            if(nums[mid] == target){
-                index = mid;
-                break;
-            }
-
-            else if(nums[left] <= nums[mid]){
-                if( target > nums[left] && target < nums[mid]){
-                    left++;
-                    right = mid - 1;
-
-                }
-                else{
-                    left = mid;
-                }
+public class Solution {
+    public static int repeatedNTimes(int[] nums) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int rn = 0;
+        for(int i = 0; i < nums.length; i++){
+            if(map.containsKey(nums[i])){
+                rn = nums[i];
             }
             else{
-                if(target > nums[right] && target < nums[mid]){
-                    right = mid;
-                }
-                else{
-                    left = mid;
-                    right --;
-                }
+                map.put(nums[i], 1 );
             }
         }
-        return index;
+        return rn;
     }
- }
+
+    public static void main(String[] args){
+        int[] nums = {1,2,3,3};
+        int result = repeatedNTimes(nums);
+        System.out.println(result);
+    }
+}

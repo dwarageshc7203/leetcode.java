@@ -1,40 +1,29 @@
-// TODO: Define PrinterTask class that implements Runnable
-class PrinterTask implements Runnable{
-    public void run(){
-        for ( int i = 1; i <= 5; i++){
-            System.out.println(Thread.currentThread().getName() + ": Running task " + i);
-        }
-    }
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+public class Exercise{
+    public static void main(String[] args){
+        Set<Integer> nums = new HashSet<Integer>();
+        nums.add(111);
+        nums.add(2222);
+        nums.add(333);
+        System.out.println(nums);
+
+        Iterator<Integer> val = nums.iterator();
+        Map<String, Integer> students = new HashMap<>();
+        students.put("CNL", 100);
+        students.put("CNL", 99);
+        students.put("CNL", 100);
+        students.put("BNL", 99);
+        students.put("ANL", 99);
+        System.out.println(students);
+        System.out.println(students.keySet());
+        System.out.println(students.values());
+
 }
-public class Exercise {
-    public static void main(String[] args) {
-        // TODO: Create a single PrinterTask object
-        PrinterTask task = new PrinterTask();
-
-        Thread t1 = new Thread(task, "Worker-1");
-        Thread t2 = new Thread(task, "Worker-2");
-
-
-        // TODO: Create two threads using the same task
-        // Name them "Worker-1" and "Worker-2"
-        
-        t1.start();
-        t2.start();
-
-        // TODO: Start both threads
-
-        // TODO: Use join() to wait for both threads to finish
-        try {
-			t1.join();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        try {
-			t2.join();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
 }
