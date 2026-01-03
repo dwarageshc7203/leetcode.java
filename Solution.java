@@ -1,4 +1,4 @@
-import java.util.List;
+/* import java.util.List;
 import java.util.ArrayList;
 
 class Solution {
@@ -45,6 +45,60 @@ class Solution {
             leftC++;
         }
 
+        return answer;
+    }
+} */
+
+class Solution {
+    public int[][] generateMatrix(int n) {
+        int[][] answer = new int[n][n];
+        int value = 1;
+        
+        int leftR = 0;
+        int leftC = 0;
+        int rightR = answer.length - 1;
+        int rightC = answer[0].length - 1;
+
+        while (leftR <= rightR && leftC <= rightC && value <= n*n)
+        {
+            //top side
+            for( int i = leftC; i <= rightC; i++)
+            {
+                answer[leftR][i] = value;
+                value++;
+            }
+            leftR++;
+
+            //right side
+            for( int i = leftR; i <= rightR; i++)
+            {
+                answer[i][rightC] = value;
+                value++;
+            }
+            rightC--;
+
+            //bottom side
+            if(leftR <= rightR)
+            {
+                for(int i = rightC; i >= leftC; i--)
+                {
+                    answer[rightR][i] = value;
+                    value++;   
+                }
+            }
+            rightR--;
+
+            //left side
+            if(leftC <= rightC)
+            {
+                for(int i = rightR; i >= leftR; i--)
+                {
+                    answer[i][leftC] = value;
+                    value++;
+                }
+            }
+            leftC++;
+        }
         return answer;
     }
 }
