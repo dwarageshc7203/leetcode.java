@@ -1,4 +1,4 @@
-package TodoList;
+package TodoList.src.main.java.org.example;
 
 public class Task {
 
@@ -22,24 +22,27 @@ public class Task {
         return id;
     }
 
-    public void setId(int id) {
+    public int setId(int id) {
         this.id = id;
+        return id;
     }
 
     public String getTaskName() {
         return taskName;
     }
 
-    public void setTaskName(String taskName) {
+    public String setTaskName(String taskName) {
         this.taskName = taskName;
+        return taskName;
     }
 
     public String getDesc() {
         return desc;
     }
 
-    public void setDesc(String desc) {
+    public String setDesc(String desc) {
         this.desc = desc;
+        return desc;
     }
 
     public String getStatus() {
@@ -50,3 +53,4 @@ public class Task {
         this.status = status;
     }
 }
+

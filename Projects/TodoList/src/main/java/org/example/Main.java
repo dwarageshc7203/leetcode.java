@@ -1,4 +1,4 @@
-package org.example;
+package TodoList.src.main.java.org.example;
 
 import java.util.Scanner;
 
