@@ -1,4 +1,4 @@
-package TodoList.src.main.java.org.example;
+package org.example;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
