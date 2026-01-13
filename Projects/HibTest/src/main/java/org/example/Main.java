@@ -10,13 +10,13 @@ import org.hibernate.cfg.Configuration;
 public class Main {
     public static void main(String[] args) {
         Student s = new Student();
-        s.setSid(1);
-        s.setName("CNL");
-        s.setAge(19);
+        s.setSid(3);
+        s.setName("ENL");
+        s.setAge(21);
 
-        Configuration cfg = new Configuration();
-        cfg.addAnnotatedClass(org.example.Student.class);
-        cfg.configure();
+        Configuration cfg = new Configuration()
+                .addAnnotatedClass(org.example.Student.class)
+                .configure();
 
         SessionFactory sf = cfg.buildSessionFactory();
         Session session = sf.openSession();
@@ -24,6 +24,8 @@ public class Main {
         Transaction transaction = session.beginTransaction();
         session.persist(s);
         transaction.commit();
+        sf.close();
+        session.close();
 
         System.out.println(s);
     }
