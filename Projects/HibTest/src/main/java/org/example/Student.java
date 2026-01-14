@@ -1,7 +1,6 @@
     package org.example;
 
-    import jakarta.persistence.Entity;
-    import jakarta.persistence.Id;
+    import jakarta.persistence.*;
 
     @Entity
     public class Student {
@@ -10,12 +9,22 @@
         private int sid;
         private String name;
         private int age;
+        @OneToOne
+        private Classroom classroom;
 
         public Student(){
         }
 
         public int getSid() {
             return sid;
+        }
+
+        public Classroom getClassroom() {
+            return classroom;
+        }
+
+        public void setClassroom(Classroom classroom) {
+            this.classroom = classroom;
         }
 
         public void setSid(int sid) {

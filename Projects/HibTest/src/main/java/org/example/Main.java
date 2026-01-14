@@ -9,13 +9,20 @@ import org.hibernate.cfg.Configuration;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+        Classroom c =  new Classroom();
+        c.setcId(1);
+        c.setClassName("I - A");
+        c.setStaffName("ANL");
+
         Student s = new Student();
-        s.setSid(3);
-        s.setName("ENL");
-        s.setAge(21);
+        s.setSid(11);
+        s.setName("CNL");
+        s.setAge(20);
+        s.setClassroom(c);
 
         Configuration cfg = new Configuration()
                 .addAnnotatedClass(org.example.Student.class)
+                .addAnnotatedClass(org.example.Classroom.class)
                 .configure();
 
         SessionFactory sf = cfg.buildSessionFactory();
@@ -23,6 +30,7 @@ public class Main {
 
         Transaction transaction = session.beginTransaction();
         session.persist(s);
+        session.persist(c);
         transaction.commit();
         sf.close();
         session.close();
