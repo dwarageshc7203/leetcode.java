@@ -2,6 +2,9 @@ package org.example;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.List;
 
 @Entity
 public class Classroom {
@@ -10,6 +13,8 @@ public class Classroom {
     private int cId;
     private String className;
     private String staffName;
+    @OneToMany ( mappedBy = "classroom")
+    private List<Student> students;
 
     public int getcId() {
         return cId;
@@ -17,6 +22,14 @@ public class Classroom {
 
     public void setcId(int cId) {
         this.cId = cId;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
     public String getClassName() {
@@ -41,6 +54,7 @@ public class Classroom {
                 "cId=" + cId +
                 ", className='" + className + '\'' +
                 ", staffName='" + staffName + '\'' +
+                ", students=" + students +
                 '}';
     }
 }

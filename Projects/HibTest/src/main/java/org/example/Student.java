@@ -9,7 +9,7 @@
         private int sid;
         private String name;
         private int age;
-        @OneToOne
+        @ManyToOne
         private Classroom classroom;
 
         public Student(){
