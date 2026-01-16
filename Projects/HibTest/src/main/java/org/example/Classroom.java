@@ -2,7 +2,7 @@ package org.example;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class Classroom {
     private int cId;
     private String className;
     private String staffName;
-    @OneToMany ( mappedBy = "classroom")
+    @ManyToMany( mappedBy = "classroom")
     private List<Student> students;
 
     public int getcId() {

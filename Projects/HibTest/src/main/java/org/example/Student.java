@@ -2,6 +2,8 @@
 
     import jakarta.persistence.*;
 
+    import java.util.List;
+
     @Entity
     public class Student {
 
@@ -9,8 +11,8 @@
         private int sid;
         private String name;
         private int age;
-        @ManyToOne
-        private Classroom classroom;
+        @ManyToMany
+        private List<Classroom> classroom;
 
         public Student(){
         }
@@ -19,11 +21,11 @@
             return sid;
         }
 
-        public Classroom getClassroom() {
+        public List<Classroom> getClassroom() {
             return classroom;
         }
 
-        public void setClassroom(Classroom classroom) {
+        public void setClassroom(List<Classroom> classroom) {
             this.classroom = classroom;
         }
 
@@ -53,6 +55,7 @@
                     "sid=" + sid +
                     ", name='" + name + '\'' +
                     ", age=" + age +
+                    ", classroom=" + classroom +
                     '}';
         }
     }
