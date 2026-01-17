@@ -1,10 +1,10 @@
 package org.example;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 
 import java.util.List;
+
+
 
 @Entity
 public class Classroom {
@@ -13,7 +13,7 @@ public class Classroom {
     private int cId;
     private String className;
     private String staffName;
-    @ManyToMany( mappedBy = "classroom")
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Student> students;
 
     public int getcId() {
@@ -54,7 +54,7 @@ public class Classroom {
                 "cId=" + cId +
                 ", className='" + className + '\'' +
                 ", staffName='" + staffName + '\'' +
-                ", students=" + students +
+                ", students='" + students + '\'' +
                 '}';
     }
 }

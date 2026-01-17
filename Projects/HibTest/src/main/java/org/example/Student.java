@@ -11,22 +11,12 @@
         private int sid;
         private String name;
         private int age;
-        @ManyToMany
-        private List<Classroom> classroom;
 
         public Student(){
         }
 
         public int getSid() {
             return sid;
-        }
-
-        public List<Classroom> getClassroom() {
-            return classroom;
-        }
-
-        public void setClassroom(List<Classroom> classroom) {
-            this.classroom = classroom;
         }
 
         public void setSid(int sid) {
@@ -55,7 +45,6 @@
                     "sid=" + sid +
                     ", name='" + name + '\'' +
                     ", age=" + age +
-                    ", classroom=" + classroom +
                     '}';
         }
     }
