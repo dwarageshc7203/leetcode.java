@@ -42,12 +42,13 @@ public class Main {
 //        c3.setStaffName("CNL");
 //        c3.setStudents(Arrays.asList(s2, s3));
 
-        Configuration cfg = new Configuration()
+        SessionFactory sf = new Configuration()
                 .addAnnotatedClass(org.example.Student.class)
-                .addAnnotatedClass(org.example.Classroom.class)
-                .configure();
+                .configure()
+                .buildSessionFactory();
 
-        SessionFactory sf = cfg.buildSessionFactory();
+
+        
         Session session = sf.openSession();
 
         Transaction transaction = session.beginTransaction();
