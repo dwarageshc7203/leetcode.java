@@ -1,36 +1,38 @@
 package org.example;
 
+import jakarta.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import java.util.Arrays;
+import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
         Student s1 = new Student();
-        Student s2 = new Student();
-        Student s3 = new Student();
-
-        Classroom c1 =  new Classroom();
-        Classroom c2 =  new Classroom();
-        Classroom c3 =  new Classroom();
+//        Student s2 = new Student();
+//        Student s3 = new Student();
+//
+//        Classroom c1 =  new Classroom();
+//        Classroom c2 =  new Classroom();
+//        Classroom c3 =  new Classroom();
 
         s1.setSid(1);
         s1.setName("ANL");
         s1.setAge(19);
 
-        s2.setSid(2);
-        s2.setName("BNL");
-        s2.setAge(20);
-
-        c1.setcId(1);
-        c1.setClassName("I - A");
-        c1.setStaffName("ANL");
-        c1.setStudents(Arrays.asList(s1, s2));
+//        s2.setSid(2);
+//        s2.setName("BNL");
+//        s2.setAge(20);
+//
+//        c1.setcId(1);
+//        c1.setClassName("I - A");
+//        c1.setStaffName("ANL");
+//        c1.setStudents(Arrays.asList(s1, s2));
 
 //        c2.setcId(2);
 //        c2.setClassName("II - A");
@@ -47,24 +49,25 @@ public class Main {
                 .configure()
                 .buildSessionFactory();
 
-
-        
         Session session = sf.openSession();
 
-        Transaction transaction = session.beginTransaction();
-        session.persist(s1);
-        session.persist(s2);
+        Query query = session.createQuery("from Student where age = 19");
+        List<Student> students = query.getResultList();
 
-        session.persist(c1);
-
-        transaction.commit();
+//        Transaction transaction = session.beginTransaction();
+//        session.persist(s1);
+////        session.persist(s2);
+////
+////        session.persist(c1);
+//
+//        transaction.commit();
         session.close();
 
-        Session sess = sf.openSession();
-        Classroom s10 = sess.find(Classroom.class, 1);
-        System.out.println(s10);
-
-        sf.close();
+//        Session sess = sf.openSession();
+//        Classroom s10 = sess.find(Classroom.class, 1);
+//        System.out.println(s10);
+//
+//        sf.close();
 
 //        System.out.println(s1);
 //        System.out.println(s2);
