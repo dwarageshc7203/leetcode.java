@@ -53,24 +53,14 @@ public class Main {
 
         Query query = session.createQuery("from Student where age = 19");
         List<Student> students = query.getResultList();
-
-//        Transaction transaction = session.beginTransaction();
-//        session.persist(s1);
-////        session.persist(s2);
-////
-////        session.persist(c1);
-//
-//        transaction.commit();
         session.close();
 
-//        Session sess = sf.openSession();
-//        Classroom s10 = sess.find(Classroom.class, 1);
-//        System.out.println(s10);
-//
-//        sf.close();
+        Session sess = sf.openSession();
+        Query q = session.createQuery("from Student where age = 19");
+        List<Student> students = q.getResultList();
+        sess.close();
 
-//        System.out.println(s1);
-//        System.out.println(s2);
-//        System.out.println(s3);
+        sf.close():
+
     }
 }
