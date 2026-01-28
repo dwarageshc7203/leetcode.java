@@ -1,5 +1,4 @@
-package org.example;
-
+package org.resources;
 import jakarta.persistence.*;
 
 import java.util.List;

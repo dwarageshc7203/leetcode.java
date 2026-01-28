@@ -1,4 +1,4 @@
-    package org.example;
+package org.resources;
 
     import jakarta.persistence.*;
 

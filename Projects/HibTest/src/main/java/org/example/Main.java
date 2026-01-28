@@ -1,4 +1,4 @@
-package org.example;
+package org.resources;
 
 import jakarta.persistence.Query;
 import org.hibernate.Session;
@@ -6,7 +6,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import java.util.Arrays;
 import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -59,6 +58,7 @@ public class Main {
         Query q = session.createQuery("from Student where age = 19");
         List<Student> students = q.getResultList();
         sess.close();
+
 
         sf.close():
 
