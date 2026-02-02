@@ -1,9 +1,7 @@
-package org.resources;
+package org.example;
 import jakarta.persistence.*;
 
 import java.util.List;
-
-
 
 @Entity
 public class Classroom {
